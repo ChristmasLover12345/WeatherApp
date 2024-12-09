@@ -89,13 +89,39 @@ body
 
 /* FAVORITES START */
 
-.dropdownBtn
+.dropbtn 
 {
-    height: 53px;
+    background-color: #D9D9D9;
+    color: black;
     width: 333px;
-    border-radius: 0px;
-    background-color: #D9D9D9 !important;
-    color: black !important;
+    height: 53px;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+}
+
+  .dropdown
+{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content
+{
+    display: none;
+    position: absolute;
+    background-color: #D9D9D9;
+    min-width: 333px;
+    max-width: 333px;
+    z-index: 1;
+    font-size: 28px;
+}
+
+.show 
+{
+    display:block;
+    display: flex;
+    flex-direction: column;
 }
 
 /* FAVORITES END */

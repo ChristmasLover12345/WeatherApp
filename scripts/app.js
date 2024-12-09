@@ -1,5 +1,8 @@
 import { APIKEY } from "./key.js";
 
+let myDropdown = document.getElementById('myDropdown');
+let dropdownBtn = document.getElementById('dropdownBtn');
+
 let searchBar = document.getElementById('searchBar');
 
 
@@ -32,4 +35,14 @@ async function getName(){
     const data = await promise.json();
     console.log(data)
 }
+
+function dropdown(){
+    myDropdown.classList.toggle("show")
+}
+
+dropdownBtn.addEventListener('click', function(){
+    dropdown()
+})
+
+
 
