@@ -1,0 +1,41 @@
+body
+{
+    background-color: #678AE3;
+}
+
+.nav
+{
+    background-color: #163C89;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+
+.relative
+{
+    position: relative;
+}
+
+.searchBar
+{
+   background-color: white;
+   padding-right: 10px;
+}
+
+.searchBar img{
+    width: 32px;
+    height: 32px;
+}
+
+.searchBar input{
+    height: 53px;
+    width: 291px;
+    border: none;
+    padding: 0;
+}
+
+.previousSearches
+{
+    background-color: white;
+}
