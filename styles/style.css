@@ -3,6 +3,11 @@ body
     background-color: #678AE3;
 }
 
+/* NAVBAR START */
+
+
+
+/* SEARCH BAR START */
 .nav
 {
     background-color: #163C89;
@@ -11,7 +16,6 @@ body
     
 }
 
-
 .relative
 {
     position: relative;
@@ -19,13 +23,21 @@ body
 
 .searchBar
 {
-   background-color: white;
+   background-color: #D9D9D9;
+   max-height: 53px;
    padding-right: 10px;
+   display: flex;
+}
+.searchBar input{
+    background-color: #D9D9D9;
+    font-size: 28px;
 }
 
 .searchBar img{
     width: 32px;
     height: 32px;
+    
+    align-self: center;
 }
 
 .searchBar input{
@@ -37,5 +49,56 @@ body
 
 .previousSearches
 {
-    background-color: white;
+    background-color: #D9D9D9;
 }
+
+/* SEARCH BAR END */
+
+
+/* CURRENT TAB START */
+.current
+{
+    background-color: #D9D9D9;
+    width: 333px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+}
+
+.current p 
+{
+    font-size: 24px;
+}
+
+.current img
+{
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.end
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+/* CURRENT TAB END */
+
+/* FAVORITES START */
+
+.dropdownBtn
+{
+    height: 53px;
+    width: 333px;
+    border-radius: 0px;
+    background-color: #D9D9D9 !important;
+    color: black !important;
+}
+
+/* FAVORITES END */
+
+
+/* NAVBAR END */

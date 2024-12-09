@@ -10,23 +10,44 @@
   <body>
     
     <navBar class="nav p-4">
-
         <div class="relative">
             <div class="searchBar">
-                <input id="searchBar" class="me-0" placeholder="Search for a location" type="text">
-                <img src="./assets/magnifying glass.jpg" alt="a magnifying glass">
+                <input id="searchBar" class="me-0" placeholder="Search for location" type="text">
+               
+                <img src="./assets/magnifying-glass-18.png" alt="a magnifying glass">
+                
             </div>
             <div class="previousSearches">
 
             </div>
         </div>
 
+        <div class="current">
+          <p class="mb-0 ps-2">N/A</p>
+          <div class="end">
+          <img class="me-2" src="./assets/star.png" alt="an empty star">
+        </div>
+        </div>
+
+        
+
+          <div class="dropdown">
+            <button class="dropdownBtn btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+
+        
+
     </navBar>
 
 
-<h2>temperature Here</h2>
-<h2>Name Here</h2>
-<img src="" alt="">
+
 
     <script type="module" src="./scripts/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
