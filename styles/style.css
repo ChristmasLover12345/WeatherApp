@@ -128,3 +128,30 @@ body
 
 
 /* NAVBAR END */
+
+
+/* MAIN DISPLAY START */
+
+.mainDisplay
+{
+    width: 1291px;
+    height: 420px;
+    border-radius: 20px;
+    background-color: #5590BD;
+    margin-top: 10px;
+
+}
+/* MAIN DISPLAY END */
+
+
+/* FORECAST START */
+
+.forecast-content
+{
+    background-color: #5590BD;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+/* FORECAST END */
