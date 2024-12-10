@@ -1,6 +1,11 @@
+@font-face {
+    font-family: JustifinSan;
+    src: url(../assets/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+}
 body
 {
     background-color: #678AE3;
+   font-family: JustifinSan;
 }
 
 /* NAVBAR START */
@@ -139,12 +144,36 @@ body
     border-radius: 20px;
     background-color: #5590BD;
     margin-top: 10px;
-
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 }
+
+.currentTempDisplay
+{
+    margin-top: 10px;
+    grid-column: 1 / 4;
+    grid-row: 1;
+    text-align: center;
+    color: white;
+}
+.currentTempDisplay p 
+{
+    font-size: 36px;
+    margin-bottom: 0;
+    font-weight: 300;
+}
+
+
 /* MAIN DISPLAY END */
 
 
 /* FORECAST START */
+
+.forecastHeader
+{
+    font-size: 64px;
+}
 
 .forecast-content
 {

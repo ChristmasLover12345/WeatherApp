@@ -11,6 +11,7 @@
     
     <navBar class="nav p-4">
 
+        <!-- Search bar -->
         <div class="relative">
             <div class="searchBar">
                 <input id="searchBar" class="me-0" placeholder="Search for location" type="text">
@@ -23,6 +24,7 @@
             </div>
         </div>
 
+         <!-- Current -->
         <div class="current">
           <p class="mb-0 ps-2">N/A</p>
           <div class="end">
@@ -31,9 +33,9 @@
         </div>
 
         
-
+        <!-- Favorites -->
         <div class="dropdown">
-          <button id="dropdownBtn" class="dropbtn">Dropdown</button>
+          <button id="dropdownBtn" class="dropbtn">Favorites</button>
           <div id="myDropdown" class="dropdown-content">
            <!-- P tags are gonna be generated here based on favorites -->
             <!-- un-note these ones to test the dropdown -->
@@ -48,13 +50,22 @@
 
     <div class="d-flex justify-content-center mt-5 mb-5">
      <div class="mainDisplay">
-      content goes here
+      
+      <div class="currentTempDisplay">
+        <h1>Current weather</h1>
+        <p id="currentTemp">N/A</p>
+      </div>
+
+      <div class="currentDateDisplay">
+        
+      </div>
+
      </div>
     </div>
 
     
 
-    <h1 class="text-white ms-5 ps-4 mb-5">5 day forcast</h1>
+    <h1 class="text-white ms-5 ps-4 mb-5 forecastHeader">5 day forcast</h1>
 
     <div class="d-flex justify-content-evenly">
 
