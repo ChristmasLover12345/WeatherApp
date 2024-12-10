@@ -258,6 +258,44 @@ body
     width: 200px;
     height: 200px;
     border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 20% 80%;
+    color: white;
+    text-align: center;
 }
+
+.forecast-content h6
+{
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    font-weight: 300;
+}
+
+.forecast-content img
+{
+    grid-column: 1;
+    display: flex;
+    align-self: center;
+}
+
+
+
+.forecast-content div h5
+{
+    padding-top: 10px;
+    font-size: 48px;
+    padding-bottom: 10px;
+}
+
+.forecast-content div h4
+{
+    font-size: 48px;
+    color: gray;
+}
+
+
 
 /* FORECAST END */
