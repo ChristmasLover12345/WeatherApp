@@ -149,7 +149,7 @@ body
     grid-template-rows: repeat(4, 1fr);
 }
 
-.currentTempDisplay
+.currentTimeDisplay
 {
     margin-top: 10px;
     grid-column: 1 / 4;
@@ -157,7 +157,7 @@ body
     text-align: center;
     color: white;
 }
-.currentTempDisplay p 
+.currentTimeDisplay p 
 {
     font-size: 36px;
     margin-bottom: 0;
@@ -174,6 +174,73 @@ body
     text-align: center;
 }
 
+.today
+{
+    grid-row: 1;
+    grid-column: 7 / 10;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+
+.currentTempDisplay
+{
+    grid-column: 1 / 4;
+    grid-row: 2 / 4;
+    display: flex;
+    justify-content: space-between;
+    overflow: visible;
+    color: white;
+}
+
+.currentTempDisplay img
+{
+    max-height: 200px;
+}
+
+.currentTempDisplay h1
+{
+    font-size: 128px;
+    margin-bottom: 0;
+}
+.currentTempDisplay h5
+{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 0;
+}
+
+.minMaxTemp
+{
+    grid-column: 7 / 10;
+    grid-row: 2 / 5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.minMaxTemp div
+{
+    padding-right: 10px;
+}
+
+.minMaxTemp h1
+{
+    font-size: 48px;
+    margin-bottom: 0;
+    color: #FFFFFF;
+}
+.minMaxTemp h5
+{
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 0;
+    color: gray;
+}
+
+.minMaxTemp img
+{
+    max-height: 200px;
+}
 
 /* MAIN DISPLAY END */
 

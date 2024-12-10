@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles/style.css">    
 </head>
   <body>
-    
+    <!-- Nav Bar -->
     <navBar class="nav p-4">
 
         <!-- Search bar -->
@@ -47,11 +47,11 @@
 
     </navBar>
 
-
+    <!-- Main Display -->
     <div class="d-flex justify-content-center mt-5 mb-5">
      <div class="mainDisplay">
       
-      <div class="currentTempDisplay">
+      <div class="currentTimeDisplay">
         <h1>Current weather</h1>
         <p id="currentTime">N/A</p>
       </div>
@@ -60,6 +60,27 @@
         <span id="day">N/A,</span><span id="date">N/A</span>
       </div>
 
+      <h1 class="today">Today</h1>
+
+      <div class="currentTempDisplay">
+        <img src="" alt="an icon based on the current weather">
+        <div>
+          <h1 id="currentTemp">N/A</h1>
+          <h5 id="feelsLike">N/A</h5>
+        </div>
+      </div>
+
+      <div class="minMaxTemp">
+
+        <img src="" alt="an icon based on the current weather">
+        <div>
+          <h1 id="maxTemp">N/A</h1>
+          <h5 id="minTemp">N/A</h5>
+        </div>
+
+      </div>
+
+
      </div>
     </div>
 
@@ -67,6 +88,8 @@
 
     <h1 class="text-white ms-5 ps-4 mb-5 forecastHeader">5 day forcast</h1>
 
+
+    <!-- Forecast -->
     <div class="d-flex justify-content-evenly">
 
       <div class="forecast-content">

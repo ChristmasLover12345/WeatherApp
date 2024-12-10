@@ -58,6 +58,9 @@ dropdownBtn.addEventListener('click', function(){
 
 
 function dateNTime(){
+// FOR SOME REASON IT CANT READ DATA.DT REMEMBER TO ASK A TEACEHR FOR HELP LATER
+CurrentWeather().then( data => {
+timeSinceEpoch = data.dt 
 
 let startDay = new Date('January 2, 2024 00:00:00');
 let getDay = startDay.getDay()
@@ -77,11 +80,11 @@ let timeRn = date2.toLocaleTimeString('en-US', {
 
 currentTime.innerText = timeRn
 
-}
+})}
 
 
 
-dateNTime()
+// dateNTime()
 
 
 
