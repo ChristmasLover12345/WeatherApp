@@ -8,10 +8,18 @@ let date = document.getElementById('date');
 let currentTime = document.getElementById('currentTime');
 
 let searchBar = document.getElementById('searchBar');
+let navCurrent = document.getElementById('navCurrent');
 
-let currentIcon = document.getElementById('currentIcon');
+let favBtn = document.getElementById('favBtn');
+let favContainer = document.getElementById('favContainer');
+
+let currentIcon1 = document.getElementById('currentIcon1');
+let currentIcon2 = document.getElementById('currentIcon2');
+let currentTemp = document.getElementById('currentTemp');
 let maxTemp = document.getElementById('maxTemp');
 let minTemp = document.getElementById('minTemp');
+let description1 = document.getElementById('description1');
+let description2 = document.getElementById('description2');
 
 let forecast1Day = document.getElementById('forecast1Day');
 let forecastImg1 = document.getElementById('forecastImg1');
@@ -42,15 +50,15 @@ let forcastMin5 = document.getElementById('forcastMin5');
 let timeSinceEpoch = 0;
 
 // data fetches
-let lat = "52.3676";
-let lon = "4.9041";
+let lat = "";
+let lon = "";
 let userSearch = ""
 
 async function CurrentWeather(){
 
     const promise = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`);
     const data = await promise.json();
-    console.log(data)
+    console.log()
     // if you are gonna use data outside of this function remember to do the return
     return data;
     
@@ -101,10 +109,15 @@ let currentDay = ["Sunday, ", "Monday, ", "Tuesday, ", "Wednesday, ", "Thursday,
 
 day.innerText = currentDay[getDay]
 
-// I used Chat GPT to help me translate the time from seconds to the 12 hour, I wasnt able to find the answer trugh google.
+// I used Chat GPT to help me translate the time from seconds to the 12 hour, I wasnt able to find the answer trugh google. I was able to understand how the other methods on my own tho
 let millisecondsSinceEpoch = timeSinceEpoch * 1000;
 let date2 = new Date(millisecondsSinceEpoch);
 let dayOfMonth = date2.getDate();
+let year = date2.getFullYear();
+let month = date2.getMonth();
+
+
+let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
 let timeRn = date2.toLocaleTimeString('en-US', {
     hour: '2-digit',
@@ -113,17 +126,46 @@ let timeRn = date2.toLocaleTimeString('en-US', {
 });
 
 currentTime.innerText = timeRn;
-date.innerText = dayOfMonth;
+date.innerText = `${months[month]}/${dayOfMonth}/${year}`;
+
+
+// the actual weather part
+
+currentIcon1.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+currentIcon2.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+description1.innerText = data.weather[0].description
+description2.innerText = data.weather[0].description
+let temperature = (data.main.temp - 273.15) * 9/5 + 32;
+let temperatureMax = (data.main.temp_max - 273.15) * 9/5 + 32;
+let temperatureMin = (data.main.temp_min - 273.15) * 9/5 + 32;
+
+currentTemp.innerText = `${temperature.toFixed()}°F`
+maxTemp.innerText = `${temperatureMax.toFixed()}°F`
+minTemp.innerText = `${temperatureMin.toFixed()}°F`
 
 }
 
 
 
+// SearchBar
+searchBar.addEventListener('keydown', function(){
+    if(event.key === "Enter")
+    {
+     userSearch = searchBar.value;
+     getCityName()
+     .then(
+     currentInfo() )
+    }
+
+})
 
 
-
-
-
+// translating the search bar value onto a location
+async function getCityName() {
+    let data = await getName();
+    // lat = .lat;
+    // lon = .lon;
+}
 
 
 
