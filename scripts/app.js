@@ -50,7 +50,10 @@ async function CurrentWeather(){
 
     const promise = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`);
     const data = await promise.json();
-    console.log(data.dt)
+    console.log(data)
+    // if you are gonna use data outside of this function remember to do the return
+    return data;
+    
 }
 
 async function forecastWeather(){
@@ -58,6 +61,8 @@ async function forecastWeather(){
     const promise = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKEY}`);
     const data = await promise.json();
     console.log(data)
+    return data;
+  
 }
 
 async function getName(){
@@ -65,6 +70,8 @@ async function getName(){
     const promise = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit=1&appid=${APIKEY}`);
     const data = await promise.json();
     console.log(data)
+    return data;
+    
 }
 
 
@@ -81,10 +88,12 @@ dropdownBtn.addEventListener('click', function(){
 
 
 
-function currentInfo(){
-// FOR SOME REASON IT CANT READ DATA.DT REMEMBER TO ASK A TEACEHR FOR HELP LATER
-CurrentWeather().then( data => {
-timeSinceEpoch = data.dt })
+async function currentInfo(){
+let data = await CurrentWeather()
+console.log(data);
+
+// Time and date part
+timeSinceEpoch = data.dt 
 
 let startDay = new Date('January 2, 2024 00:00:00');
 let getDay = startDay.getDay()
@@ -95,16 +104,19 @@ day.innerText = currentDay[getDay]
 // I used Chat GPT to help me translate the time from seconds to the 12 hour, I wasnt able to find the answer trugh google.
 let millisecondsSinceEpoch = timeSinceEpoch * 1000;
 let date2 = new Date(millisecondsSinceEpoch);
+let dayOfMonth = date2.getDate();
+
 let timeRn = date2.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true
 });
 
-
-currentTime.innerText = timeRn
+currentTime.innerText = timeRn;
+date.innerText = dayOfMonth;
 
 }
+
 
 
 
