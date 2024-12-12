@@ -209,8 +209,39 @@ async function forecastFunc(){
     forcastMax4.innerText = `${maxAve1.toFixed()}°`;
     forcastMax5.innerText = `${maxAve1.toFixed()}°`;
 
+    forecastImg1.src = `http://openweathermap.org/img/wn/${data.list[4].weather[0].icon}@2x.png`
+    forecastImg2.src = `http://openweathermap.org/img/wn/${data.list[12].weather[0].icon}@2x.png`
+    forecastImg3.src = `http://openweathermap.org/img/wn/${data.list[20].weather[0].icon}@2x.png`
+    forecastImg4.src = `http://openweathermap.org/img/wn/${data.list[28].weather[0].icon}@2x.png`
+    forecastImg5.src = `http://openweathermap.org/img/wn/${data.list[36].weather[0].icon}@2x.png`
 
 
+    // Getting the dates
+    let seconds1 = new Date((data.list[4].dt * 1000));
+    let seconds2 = new Date((data.list[12].dt * 1000));
+    let seconds3 = new Date((data.list[20].dt * 1000));
+    let seconds4 = new Date((data.list[28].dt * 1000));
+    let seconds5 = new Date((data.list[36].dt * 1000));
+
+    let day1 = seconds1.getDate();
+    let day2 = seconds2.getDate();
+    let day3 = seconds3.getDate();
+    let day4 = seconds4.getDate();
+    let day5 = seconds5.getDate();
+
+    let dayName1 = seconds1.getDay();
+    let dayName2 = seconds2.getDay();
+    let dayName3 = seconds3.getDay();
+    let dayName4 = seconds4.getDay();
+    let dayName5 = seconds5.getDay();
+   
+    let futureDay = ["Sun ", "Mon ", "Tue ", "Wed ", "Thu ", "Fri ", "Sat "]
+
+    forecast1Day.innerText = `${futureDay[dayName1]} ${day1}`
+    forecast2Day.innerText = `${futureDay[dayName2]} ${day2}`
+    forecast3Day.innerText = `${futureDay[dayName3]} ${day3}`
+    forecast4Day.innerText = `${futureDay[dayName4]} ${day4}`
+    forecast5Day.innerText = `${futureDay[dayName5]} ${day5}`
 
 }
 
