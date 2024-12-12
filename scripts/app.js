@@ -181,12 +181,36 @@ async function getCityName() {
         
 }
 
-
+// forecast Function
 async function forecastFunc(){
     let data = await forecastWeather();
+    // Getting the average for the min and max temperatures
+    let minAve1 = (((data.list[0].main.temp_min + data.list[1].main.temp_min + data.list[2].main.temp_min + data.list[3].main.temp_min + data.list[4].main.temp_min + data.list[5].main.temp_min + data.list[6].main.temp_min + data.list[7].main.temp_min) / 8) - 273.15) * 9/5 + 32;
+    let minAve2 = (((data.list[8].main.temp_min + data.list[9].main.temp_min + data.list[10].main.temp_min + data.list[11].main.temp_min + data.list[12].main.temp_min + data.list[13].main.temp_min + data.list[14].main.temp_min + data.list[15].main.temp_min) / 8) - 273.15) * 9/5 + 32;
+    let minAve3 = (((data.list[16].main.temp_min + data.list[17].main.temp_min + data.list[18].main.temp_min + data.list[19].main.temp_min + data.list[20].main.temp_min + data.list[21].main.temp_min + data.list[22].main.temp_min + data.list[23].main.temp_min) / 8) - 273.15) * 9/5 + 32;
+    let minAve4 = (((data.list[24].main.temp_min + data.list[25].main.temp_min + data.list[26].main.temp_min + data.list[27].main.temp_min + data.list[28].main.temp_min + data.list[29].main.temp_min + data.list[30].main.temp_min + data.list[31].main.temp_min) / 8) - 273.15) * 9/5 + 32;
+    let minAve5 = (((data.list[32].main.temp_min + data.list[33].main.temp_min + data.list[34].main.temp_min + data.list[35].main.temp_min + data.list[36].main.temp_min + data.list[37].main.temp_min + data.list[38].main.temp_min + data.list[39].main.temp_min) / 8) - 273.15) * 9/5 + 32;
 
-    let minAve1 = (data.list[0].main.temp_min + data.list[1].main.temp_min + data.list[2].main.temp_min + data.list[3].main.temp_min + data.list[4].main.temp_min + data.list[5].main.temp_min + data.list[6].main.temp_min + data.list[7].main.temp_min) / 8;
-    let maxAve1 = (data.list[0].main.temp_max + data.list[1].main.temp_max + data.list[2].main.temp_max + data.list[3].main.temp_max + data.list[4].main.temp_max + data.list[5].main.temp_max + data.list[6].main.temp_max + data.list[7].main.temp_max) / 8 ;
-    
+    let maxAve1 = (((data.list[0].main.temp_max + data.list[1].main.temp_max + data.list[2].main.temp_max + data.list[3].main.temp_max + data.list[4].main.temp_max + data.list[5].main.temp_max + data.list[6].main.temp_max + data.list[7].main.temp_max) / 8) - 273.15) * 9/5 + 32;
+    let maxAve2 = (((data.list[8].main.temp_max + data.list[9].main.temp_max + data.list[10].main.temp_max + data.list[11].main.temp_max + data.list[12].main.temp_max + data.list[13].main.temp_max + data.list[14].main.temp_max + data.list[15].main.temp_max) / 8) - 273.15) * 9/5 + 32;
+    let maxAve3 = (((data.list[16].main.temp_max + data.list[17].main.temp_max + data.list[18].main.temp_max + data.list[19].main.temp_max + data.list[20].main.temp_max + data.list[21].main.temp_max + data.list[22].main.temp_max + data.list[23].main.temp_max) / 8) - 273.15) * 9/5 + 32;
+    let maxAve4 = (((data.list[24].main.temp_max + data.list[25].main.temp_max + data.list[26].main.temp_max + data.list[27].main.temp_max + data.list[28].main.temp_max + data.list[29].main.temp_max + data.list[30].main.temp_max + data.list[31].main.temp_max) / 8) - 273.15) * 9/5 + 32;
+    let maxAve5 = (((data.list[32].main.temp_max + data.list[33].main.temp_max + data.list[34].main.temp_max + data.list[35].main.temp_max + data.list[36].main.temp_max + data.list[37].main.temp_max + data.list[38].main.temp_max + data.list[39].main.temp_max) / 8) - 273.15) * 9/5 + 32;
+
+    forcastMin1.innerText = `${minAve1.toFixed()}°`;
+    forcastMin2.innerText = `${minAve2.toFixed()}°`;
+    forcastMin3.innerText = `${minAve3.toFixed()}°`;
+    forcastMin4.innerText = `${minAve4.toFixed()}°`;
+    forcastMin5.innerText = `${minAve5.toFixed()}°`;
+
+    forcastMax1.innerText = `${maxAve1.toFixed()}°`;
+    forcastMax2.innerText = `${maxAve1.toFixed()}°`;
+    forcastMax3.innerText = `${maxAve1.toFixed()}°`;
+    forcastMax4.innerText = `${maxAve1.toFixed()}°`;
+    forcastMax5.innerText = `${maxAve1.toFixed()}°`;
+
+
+
+
 }
 
