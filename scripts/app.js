@@ -20,6 +20,9 @@ let maxTemp = document.getElementById('maxTemp');
 let minTemp = document.getElementById('minTemp');
 let description1 = document.getElementById('description1');
 let description2 = document.getElementById('description2');
+let deegreeHere1 = document.getElementById('deegreeHere1');
+let deegreeHere2 = document.getElementById('deegreeHere2');
+let deegreeHere3 = document.getElementById('deegreeHere3');
 
 let forecast1Day = document.getElementById('forecast1Day');
 let forecastImg1 = document.getElementById('forecastImg1');
@@ -53,12 +56,13 @@ let timeSinceEpoch = 0;
 let lat = "";
 let lon = "";
 let userSearch = ""
+let placeName = "";
 
 async function CurrentWeather(){
 
     const promise = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`);
     const data = await promise.json();
-    console.log()
+    console.log(data)
     // if you are gonna use data outside of this function remember to do the return
     return data;
     
@@ -119,7 +123,9 @@ let month = date2.getMonth();
 
 let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
-let timeRn = date2.toLocaleTimeString('en-US', {
+let timeZone = data.timezone
+
+let timeRn = date2.toLocaleTimeString('timeZone', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true
@@ -143,18 +149,22 @@ currentTemp.innerText = `${temperature.toFixed()}°F`
 maxTemp.innerText = `${temperatureMax.toFixed()}°F`
 minTemp.innerText = `${temperatureMin.toFixed()}°F`
 
+
+navCurrent.innerText = `${placeName} ${temperature.toFixed()}°F`
+
 }
 
 
 
 // SearchBar
-searchBar.addEventListener('keydown', function(){
+searchBar.addEventListener('keydown', function(event){
     if(event.key === "Enter")
     {
      userSearch = searchBar.value;
      getCityName()
-     .then(
-     currentInfo() )
+     .then(() => {
+     currentInfo() 
+     forecastFunc()})
     }
 
 })
@@ -163,10 +173,20 @@ searchBar.addEventListener('keydown', function(){
 // translating the search bar value onto a location
 async function getCityName() {
     let data = await getName();
-    // lat = .lat;
-    // lon = .lon;
+   
+    lat = data[0].lat;
+    lon = data[0].lon;
+    placeName = data[0].name;
+    
+        
 }
 
 
+async function forecastFunc(){
+    let data = await forecastWeather();
 
+    let minAve1 = (data.list[0].main.temp_min + data.list[1].main.temp_min + data.list[2].main.temp_min + data.list[3].main.temp_min + data.list[4].main.temp_min + data.list[5].main.temp_min + data.list[6].main.temp_min + data.list[7].main.temp_min) / 8;
+    let maxAve1 = (data.list[0].main.temp_max + data.list[1].main.temp_max + data.list[2].main.temp_max + data.list[3].main.temp_max + data.list[4].main.temp_max + data.list[5].main.temp_max + data.list[6].main.temp_max + data.list[7].main.temp_max) / 8 ;
+    
+}
 
