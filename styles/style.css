@@ -122,6 +122,8 @@ body
     max-width: 333px;
     z-index: 1;
     font-size: 28px;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 
 .show 

@@ -1,4 +1,5 @@
 import { APIKEY } from "./key.js";
+import { saveToLocalFav, getFromLocalFav, removeFromLocalFav } from "./localStorage.js";
 
 let myDropdown = document.getElementById('myDropdown');
 let dropdownBtn = document.getElementById('dropdownBtn');
@@ -58,6 +59,7 @@ let lon = "";
 let userSearch = ""
 let placeName = "";
 
+
 async function CurrentWeather(){
 
     const promise = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`);
@@ -90,13 +92,13 @@ async function getName(){
 // dropdown
 function dropdown(){
     myDropdown.classList.toggle("show")
+
 }
 
 dropdownBtn.addEventListener('click', function(){
     dropdown()
 })
 
-//Date and Time
 
 
 
@@ -150,7 +152,7 @@ maxTemp.innerText = `${temperatureMax.toFixed()}°F`
 minTemp.innerText = `${temperatureMin.toFixed()}°F`
 
 
-navCurrent.innerText = `${placeName} ${temperature.toFixed()}°F`
+navCurrent.innerText = `${placeName} ${temperature.toFixed()}°`
 
 }
 
@@ -245,3 +247,32 @@ async function forecastFunc(){
 
 }
 
+
+
+
+
+let favorite = false
+
+favBtn.addEventListener('click', function(){
+    if (!favorite)
+    {
+        favBtn.src = "../assets/filledStar.png"
+        favorite = true;
+        saveToLocalFav(placeName);
+    }
+    else
+    {
+        favBtn.src = "../assets/star.png"
+        favorite = false
+    }
+
+    
+
+})
+
+
+window.addEventListener('load', function() {
+
+
+    
+})
