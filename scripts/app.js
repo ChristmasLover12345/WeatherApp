@@ -272,6 +272,19 @@ favBtn.addEventListener('click', function(){
 })
 
 
+//Get user current Cords
+navigator.geolocation.getCurrentPosition( success. error); 
+
+function success(position)
+{
+    console.log(position)
+}
+
+function error(error){
+    console.log("you suck brah")
+}
+
+
 
 // Commented out so it doesnt eat up all my fetches
 
@@ -280,6 +293,7 @@ favBtn.addEventListener('click', function(){
 //     if (!lastPlaceVisited || lastPlaceVisited.length === 0)
 //     {
 //         console.log("this is your first time here!")
+            
 //     }
 //     else
 //     {
