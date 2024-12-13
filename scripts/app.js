@@ -184,6 +184,15 @@ async function getCityName() {
         
 }
 
+
+// REMEMBER TO FINISH THIS BRUH
+async function getHomeName() {
+
+
+
+}
+
+
 // forecast Function
 async function forecastFunc(){
     let data = await forecastWeather();
@@ -272,17 +281,8 @@ favBtn.addEventListener('click', function(){
 })
 
 
-//Get user current Cords
-navigator.geolocation.getCurrentPosition( success. error); 
 
-function success(position)
-{
-    console.log(position)
-}
 
-function error(error){
-    console.log("you suck brah")
-}
 
 
 
@@ -293,6 +293,26 @@ function error(error){
 //     if (!lastPlaceVisited || lastPlaceVisited.length === 0)
 //     {
 //         console.log("this is your first time here!")
+            navigator.geolocation.getCurrentPosition( success, errorFunc); 
+
+            function success(position)
+            {
+                console.log(position)
+                lat = position.coords.latitude;
+                lon = position.coords.longitude;
+                
+
+                //     .then(() => {
+                //     currentInfo() 
+                //     forecastFunc()
+                // })
+
+            }
+
+            function errorFunc(error)
+            {
+                console.log("Denied")
+            }
             
 //     }
 //     else
