@@ -185,12 +185,6 @@ async function getCityName() {
 }
 
 
-// REMEMBER TO FINISH THIS BRUH
-async function getHomeName() {
-
-
-
-}
 
 
 // forecast Function
@@ -283,6 +277,11 @@ favBtn.addEventListener('click', function(){
 
 
 
+async function getHomeName() {
+    let data = await CurrentWeather()
+    placeName = data.name
+
+}
 
 
 
@@ -293,26 +292,26 @@ favBtn.addEventListener('click', function(){
 //     if (!lastPlaceVisited || lastPlaceVisited.length === 0)
 //     {
 //         console.log("this is your first time here!")
-            navigator.geolocation.getCurrentPosition( success, errorFunc); 
+//             navigator.geolocation.getCurrentPosition( success, errorFunc); 
 
-            function success(position)
-            {
-                console.log(position)
-                lat = position.coords.latitude;
-                lon = position.coords.longitude;
+//             function success(position)
+//             {
+//                 console.log(position)
+//                 lat = position.coords.latitude;
+//                 lon = position.coords.longitude;
                 
+//                     getHomeName()
+//                     .then(() => {
+//                     currentInfo() 
+//                     forecastFunc()
+//                 })
 
-                //     .then(() => {
-                //     currentInfo() 
-                //     forecastFunc()
-                // })
+//             }
 
-            }
-
-            function errorFunc(error)
-            {
-                console.log("Denied")
-            }
+//             function errorFunc(error)
+//             {
+//                 console.log("Denied")
+//             }
             
 //     }
 //     else
