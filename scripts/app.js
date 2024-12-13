@@ -271,10 +271,18 @@ favBtn.addEventListener('click', function(){
 
 })
 
+
+
 // Commented out so it doesnt eat up all my fetches
 
 // window.addEventListener('load', function() {
 //     let lastPlaceVisited = getFromLocalSeen()
+//     if (!lastPlaceVisited || lastPlaceVisited.length === 0)
+//     {
+//         console.log("this is your first time here!")
+//     }
+//     else
+//     {
 //     userSearch = lastPlaceVisited[0]
 //     getCityName()
 //     .then(() => {
@@ -282,6 +290,7 @@ favBtn.addEventListener('click', function(){
 //     forecastFunc()
     
 //     })
+//     }
 
 
 // })
