@@ -1,7 +1,7 @@
 
 
 
-
+// FAVORITE STORAGE
 function saveToLocalFav(place){
     let placeArr = getFromLocalFav();
     if (!placeArr.includes(place)){
@@ -27,4 +27,34 @@ function removeFromLocalFav(place){
 }
 
 
-export { saveToLocalFav, getFromLocalFav, removeFromLocalFav }
+
+
+// the one they visited last
+function saveToLocalSeen(last){
+    let lastArr = getFromLocalSeen();
+    if (!lastArr.includes(last)){
+        lastArr.push(last);
+    }
+    localStorage.setItem('Last Seen', JSON.stringify(lastArr));
+}
+
+function getFromLocalSeen(){
+    let localStorageData = localStorage.getItem('Last Seen');
+    if (localStorageData == null){
+        return [];
+    }
+    return JSON.parse(localStorageData);
+}
+
+
+function removeFromLocalSeen(last){
+    let localStorageData = getFromLocalSeen();
+    let seenIndex = localStorageData.indexOf(last);
+    localStorageData.splice(seenIndex, 1);
+    localStorage.setItem('Last Seen', JSON.stringify(localStorageData));
+}
+
+
+
+
+export { saveToLocalFav, getFromLocalFav, removeFromLocalFav, saveToLocalSeen, getFromLocalSeen, removeFromLocalSeen }

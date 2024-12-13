@@ -1,5 +1,5 @@
 import { APIKEY } from "./key.js";
-import { saveToLocalFav, getFromLocalFav, removeFromLocalFav } from "./localStorage.js";
+import { saveToLocalFav, getFromLocalFav, removeFromLocalFav, saveToLocalSeen, getFromLocalSeen, removeFromLocalSeen } from "./localStorage.js";
 
 let myDropdown = document.getElementById('myDropdown');
 let dropdownBtn = document.getElementById('dropdownBtn');
@@ -162,6 +162,7 @@ navCurrent.innerText = `${placeName} ${temperature.toFixed()}°`
 searchBar.addEventListener('keydown', function(event){
     if(event.key === "Enter")
     {
+    removeFromLocalSeen(userSearch)
      userSearch = searchBar.value;
      getCityName()
      .then(() => {
@@ -179,7 +180,7 @@ async function getCityName() {
     lat = data[0].lat;
     lon = data[0].lon;
     placeName = data[0].name;
-    
+    saveToLocalSeen(placeName)
         
 }
 
@@ -270,9 +271,17 @@ favBtn.addEventListener('click', function(){
 
 })
 
+// Commented out so it doesnt eat up all my fetches
 
-window.addEventListener('load', function() {
-
-
+// window.addEventListener('load', function() {
+//     let lastPlaceVisited = getFromLocalSeen()
+//     userSearch = lastPlaceVisited[0]
+//     getCityName()
+//     .then(() => {
+//     currentInfo() 
+//     forecastFunc()
     
-})
+//     })
+
+
+// })
