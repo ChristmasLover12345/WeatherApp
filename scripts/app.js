@@ -9,10 +9,11 @@ let date = document.getElementById('date');
 let currentTime = document.getElementById('currentTime');
 
 let searchBar = document.getElementById('searchBar');
+let previousSearches = document.getElementById('previousSearches');
 let navCurrent = document.getElementById('navCurrent');
 
 let favBtn = document.getElementById('favBtn');
-let favContainer = document.getElementById('favContainer');
+
 
 let currentIcon1 = document.getElementById('currentIcon1');
 let currentIcon2 = document.getElementById('currentIcon2');
@@ -58,6 +59,7 @@ let lat = "";
 let lon = "";
 let userSearch = ""
 let placeName = "";
+let add2Fav = "";
 
 
 async function CurrentWeather(){
@@ -101,58 +103,72 @@ dropdownBtn.addEventListener('click', function(){
 
 
 
-
+// Current Display
 async function currentInfo(){
-let data = await CurrentWeather()
-console.log(data);
+    let data = await CurrentWeather()
+    console.log(data);
 
-// Time and date part
-timeSinceEpoch = data.dt 
+    // Time and date part
+    timeSinceEpoch = data.dt 
 
-let startDay = new Date('January 2, 2024 00:00:00');
-let getDay = startDay.getDay()
-let currentDay = ["Sunday, ", "Monday, ", "Tuesday, ", "Wednesday, ", "Thursday, ", "Friday, ", "Saturday, "]
+    let startDay = new Date('January 2, 2024 00:00:00');
+    let getDay = startDay.getDay()
+    let currentDay = ["Sunday, ", "Monday, ", "Tuesday, ", "Wednesday, ", "Thursday, ", "Friday, ", "Saturday, "]
 
-day.innerText = currentDay[getDay]
+    day.innerText = currentDay[getDay]
 
-// I used Chat GPT to help me translate the time from seconds to the 12 hour, I wasnt able to find the answer trugh google. I was able to understand how the other methods on my own tho
-let millisecondsSinceEpoch = timeSinceEpoch * 1000;
-let date2 = new Date(millisecondsSinceEpoch);
-let dayOfMonth = date2.getDate();
-let year = date2.getFullYear();
-let month = date2.getMonth();
-
-
-let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-
-let timeZone = data.timezone
-
-let timeRn = date2.toLocaleTimeString('timeZone', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true
-});
-
-currentTime.innerText = timeRn;
-date.innerText = `${months[month]}/${dayOfMonth}/${year}`;
+    // I used Chat GPT to help me translate the time from seconds to the 12 hour, I wasnt able to find the answer trugh google. I was able to understand how the other methods on my own tho
+    let millisecondsSinceEpoch = timeSinceEpoch * 1000;
+    let date2 = new Date(millisecondsSinceEpoch);
+    let dayOfMonth = date2.getDate();
+    let year = date2.getFullYear();
+    let month = date2.getMonth();
 
 
-// the actual weather part
+    let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
-currentIcon1.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-currentIcon2.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-description1.innerText = data.weather[0].description
-description2.innerText = data.weather[0].description
-let temperature = (data.main.temp - 273.15) * 9/5 + 32;
-let temperatureMax = (data.main.temp_max - 273.15) * 9/5 + 32;
-let temperatureMin = (data.main.temp_min - 273.15) * 9/5 + 32;
+    let timeZone = data.timezone
 
-currentTemp.innerText = `${temperature.toFixed()}°F`
-maxTemp.innerText = `${temperatureMax.toFixed()}°F`
-minTemp.innerText = `${temperatureMin.toFixed()}°F`
+    let timeRn = date2.toLocaleTimeString('timeZone', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    });
+
+    currentTime.innerText = timeRn;
+    date.innerText = `${months[month]}/${dayOfMonth}/${year}`;
 
 
-navCurrent.innerText = `${placeName} ${temperature.toFixed()}°`
+    // the actual weather part
+
+    currentIcon1.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+    currentIcon2.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+    description1.innerText = data.weather[0].description
+    description2.innerText = data.weather[0].description
+    let temperature = (data.main.temp - 273.15) * 9/5 + 32;
+    let temperatureMax = (data.main.temp_max - 273.15) * 9/5 + 32;
+    let temperatureMin = (data.main.temp_min - 273.15) * 9/5 + 32;
+
+    currentTemp.innerText = `${temperature.toFixed()}°F`
+    maxTemp.innerText = `${temperatureMax.toFixed()}°F`
+    minTemp.innerText = `${temperatureMin.toFixed()}°F`
+
+
+    navCurrent.innerText = `${placeName} ${temperature.toFixed()}°`
+    add2Fav = placeName;
+
+    // Checks if the thing searched is a favorite
+    if (getFromLocalFav().includes(add2Fav))
+    {
+        favorite = true;
+        favBtn.src = "../assets/filledStar.png"
+        
+    }
+    else if (!getFromLocalFav().includes(add2Fav))
+    {
+        favorite = false;
+        favBtn.src = "../assets/star.png"
+    }
 
 }
 
@@ -254,7 +270,7 @@ async function forecastFunc(){
 
 
 
-
+// Favorite Button
 let favorite = false
 
 favBtn.addEventListener('click', function(){
@@ -262,17 +278,49 @@ favBtn.addEventListener('click', function(){
     {
         favBtn.src = "../assets/filledStar.png"
         favorite = true;
-        saveToLocalFav(placeName);
+        saveToLocalFav(add2Fav);
+        createFavs()
     }
     else
     {
         favBtn.src = "../assets/star.png"
         favorite = false
+        removeFromLocalFav(add2Fav)
+        createFavs()
     }
 
-    
 
 })
+
+
+
+function createFavs(){
+
+    let favorites = getFromLocalFav();
+    console.log(favorites);
+
+    favorites.map(favs => {
+
+        let p = document.createElement('p');
+        p.innerText = favs;
+        
+
+        p.addEventListener('click', function(){
+            userSearch = p.innerText
+            getCityName()
+            .then(() => {
+            currentInfo() 
+            forecastFunc()})
+        })
+
+        
+
+        myDropdown.appendChild(p);
+
+    })
+
+}
+
 
 
 
@@ -288,6 +336,7 @@ async function getHomeName() {
 // Commented out so it doesnt eat up all my fetches
 
 // window.addEventListener('load', function() {
+//     createFavs()
 //     let lastPlaceVisited = getFromLocalSeen()
 //     if (!lastPlaceVisited || lastPlaceVisited.length === 0)
 //     {

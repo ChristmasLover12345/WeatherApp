@@ -5,7 +5,7 @@
 function saveToLocalFav(place){
     let placeArr = getFromLocalFav();
     if (!placeArr.includes(place)){
-        nameArr.push(place);
+        placeArr.push(place);
     }
     localStorage.setItem('Favorites', JSON.stringify(placeArr));
 }
