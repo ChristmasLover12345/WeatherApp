@@ -101,7 +101,9 @@ dropdownBtn.addEventListener('click', function(){
     dropdown()
 })
 
-
+searchBar.addEventListener('click', function(){
+    previousSearches.classList.toggle("showPrevious")
+})
 
 // Current Display
 async function currentInfo(){
@@ -180,10 +182,13 @@ searchBar.addEventListener('keydown', function(event){
     {
     removeFromLocalSeen(userSearch)
      userSearch = searchBar.value;
+     createPreviousSearches()
      getCityName()
      .then(() => {
      currentInfo() 
-     forecastFunc()})
+     forecastFunc()
+     
+    })
     }
 
 })
@@ -285,7 +290,7 @@ favBtn.addEventListener('click', function(){
     {
         favBtn.src = "../assets/star.png"
         favorite = false
-        removeFromLocalFav(add2Fav)
+        getFromLocalFav(add2Fav)
         createFavs()
     }
 
@@ -296,16 +301,19 @@ favBtn.addEventListener('click', function(){
 
 function createFavs(){
 
+    myDropdown.innerHTML = '';
     let favorites = getFromLocalFav();
     console.log(favorites);
 
     favorites.map(favs => {
 
+        
         let p = document.createElement('p');
         p.innerText = favs;
         
 
         p.addEventListener('click', function(){
+            removeFromLocalSeen(userSearch)
             userSearch = p.innerText
             getCityName()
             .then(() => {
@@ -320,6 +328,61 @@ function createFavs(){
     })
 
 }
+
+
+// Creates previous searches made
+function createPreviousSearches(){
+
+    let p = document.createElement('p');
+    p.innerText = userSearch;
+    
+
+    p.addEventListener('click', function(){
+        removeFromLocalSeen(userSearch)
+        userSearch = p.innerText
+        getCityName()
+        .then(() => {
+        currentInfo() 
+        forecastFunc()})
+    })
+
+    let star = document.createElement('img')
+
+    if (getFromLocalFav().includes(p.innerText))
+    {
+        star.src = "../assets/filledStar.png"
+    }
+    else if (!getFromLocalFav().includes(p.innerText))
+    {
+        star.src = "../assets/star.png"
+    }
+
+    star.addEventListener('click', function (){
+
+         if (getFromLocalFav().includes(p.innerText))
+        {
+            star.src = "../assets/star.png"
+            removeFromLocalFav(p.innerText)
+        }
+        else if (!getFromLocalFav().includes(p.innerText))
+        {
+            star.src = "../assets/filledStar.png"
+            saveToLocalFav(p.innerText);
+        }
+
+    })
+
+    if (previousSearches.children.length >= 2)
+        {
+            previousSearches.removeChild(previousSearches.firstChild);
+        }
+
+    p.appendChild(star)
+    previousSearches.appendChild(p);
+
+
+}
+
 
 
 
