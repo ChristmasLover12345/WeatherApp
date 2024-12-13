@@ -290,7 +290,7 @@ favBtn.addEventListener('click', function(){
     {
         favBtn.src = "../assets/star.png"
         favorite = false
-        getFromLocalFav(add2Fav)
+        removeFromLocalFav(add2Fav)
         createFavs()
     }
 
