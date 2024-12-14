@@ -282,6 +282,7 @@ favBtn.addEventListener('click', function(){
     if (!favorite)
     {
         favBtn.src = "../assets/filledStar.png"
+        
         favorite = true;
         saveToLocalFav(add2Fav);
         createFavs()
@@ -289,6 +290,7 @@ favBtn.addEventListener('click', function(){
     else
     {
         favBtn.src = "../assets/star.png"
+        
         favorite = false
         removeFromLocalFav(add2Fav)
         createFavs()
@@ -333,6 +335,19 @@ function createFavs(){
 // Creates previous searches made
 function createPreviousSearches(){
 
+
+
+
+
+    let div = document.createElement('div');
+    div.className = "previousSearchesDiv"
+
+
+
+
+
+
+
     let p = document.createElement('p');
     p.innerText = userSearch;
     
@@ -351,23 +366,31 @@ function createPreviousSearches(){
     if (getFromLocalFav().includes(p.innerText))
     {
         star.src = "../assets/filledStar.png"
+        
     }
     else if (!getFromLocalFav().includes(p.innerText))
     {
         star.src = "../assets/star.png"
+        
     }
 
     star.addEventListener('click', function (){
 
          if (getFromLocalFav().includes(p.innerText))
         {
+            favBtn.src = "../assets/star.png"
+            favorite = false
             star.src = "../assets/star.png"
             removeFromLocalFav(p.innerText)
+            createFavs()
         }
         else if (!getFromLocalFav().includes(p.innerText))
         {
+            favBtn.src = "../assets/filledStar.png"
+            favorite = true;
             star.src = "../assets/filledStar.png"
             saveToLocalFav(p.innerText);
+            createFavs()
         }
 
     })
@@ -377,8 +400,9 @@ function createPreviousSearches(){
             previousSearches.removeChild(previousSearches.firstChild);
         }
 
-    p.appendChild(star)
-    previousSearches.appendChild(p);
+    div.appendChild(p)
+    div.appendChild(star)
+    previousSearches.appendChild(div);
 
 
 }
