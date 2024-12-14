@@ -62,7 +62,17 @@ body
     max-width: 333px;
     z-index: 1;
     font-size: 28px;
-    
+}
+
+.previousSearches p 
+{
+    margin-bottom: 0;
+}
+
+.previousSearchesDiv
+{
+    display: flex;
+    justify-content: space-between;
 }
 
 .showPrevious
@@ -76,6 +86,7 @@ body
 {
     max-width: 32px;
     max-height: 32px;
+    align-self: center;
 }
 
 /* SEARCH BAR END */

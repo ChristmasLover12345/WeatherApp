@@ -422,44 +422,50 @@ async function getHomeName() {
 
 // Commented out so it doesnt eat up all my fetches
 
-// window.addEventListener('load', function() {
-//     createFavs()
-//     let lastPlaceVisited = getFromLocalSeen()
-//     if (!lastPlaceVisited || lastPlaceVisited.length === 0)
-//     {
-//         console.log("this is your first time here!")
-//             navigator.geolocation.getCurrentPosition( success, errorFunc); 
+window.addEventListener('load', function() {
+    createFavs()
+    let lastPlaceVisited = getFromLocalSeen()
+    if (!lastPlaceVisited || lastPlaceVisited.length === 0)
+    {
+        console.log("this is your first time here!")
+            navigator.geolocation.getCurrentPosition( success, errorFunc); 
 
-//             function success(position)
-//             {
-//                 console.log(position)
-//                 lat = position.coords.latitude;
-//                 lon = position.coords.longitude;
+            function success(position)
+            {
+                console.log(position)
+                lat = position.coords.latitude;
+                lon = position.coords.longitude;
                 
-//                     getHomeName()
-//                     .then(() => {
-//                     currentInfo() 
-//                     forecastFunc()
-//                 })
+                    getHomeName()
+                    .then(() => {
+                    currentInfo() 
+                    forecastFunc()
+                })
 
-//             }
+            }
 
-//             function errorFunc(error)
-//             {
-//                 console.log("Denied")
-//             }
+            function errorFunc(error)
+            {
+                 lat = "52.3676";
+                 lon = "4.9041";
+                  getHomeName()
+                    .then(() => {
+                    currentInfo() 
+                    forecastFunc()
+                })
+            }
             
-//     }
-//     else
-//     {
-//     userSearch = lastPlaceVisited[0]
-//     getCityName()
-//     .then(() => {
-//     currentInfo() 
-//     forecastFunc()
+    }
+    else
+    {
+    userSearch = lastPlaceVisited[0]
+    getCityName()
+    .then(() => {
+    currentInfo() 
+    forecastFunc()
     
-//     })
-//     }
+    })
+    }
 
 
-// })
+})

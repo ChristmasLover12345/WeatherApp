@@ -1,9 +1,13 @@
 this was built around 1440px
 
 
+Juan Heredia
 
+Date Revised: 12/13/2024
 
+Weather Sprint
 
+Made a weather app that has the ability to save favorite places and also picks up where the user left off
 
 Peer Review: Brock Spacek
  
